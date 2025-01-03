@@ -20,7 +20,7 @@ class Featured extends Component {
     
     loadPosts = () => {
         axios
-        .get('/api/posts/'+this.state.id)
+        .get('http://localhost:8000/api/posts/'+this.state.id)
         .then((res) => {this.setState({post: res.data});})
         .catch((err) => console.log(err));
     }

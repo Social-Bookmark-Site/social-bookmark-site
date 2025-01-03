@@ -16,7 +16,7 @@ async function getPosts(tagSlug) {
     var data = [];
 
     await axios
-    .get('/api/posts/?search='+ tagSlug +'&ordering=-date&page=1')
+    .get('http://localhost:8000/api/posts/?search='+ tagSlug +'&ordering=-date&page=1')
     .then((res) => data = res.data.results)
     .catch((err) => console.log(err));
     return data;
@@ -25,7 +25,7 @@ async function getPosts(tagSlug) {
 async function getTag(tagSlug) {
     var data = [];
     await axios
-    .get('/api/tags/?search=' + tagSlug)
+    .get('http://localhost:8000/api/tags/?search=' + tagSlug)
     .then((res) => data = res.data.results)
     .catch((err) => console.log(err));
 

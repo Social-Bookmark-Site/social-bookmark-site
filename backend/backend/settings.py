@@ -23,7 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["backend", "localhost"]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://frontend:3000",
+    "http://localhost:3000",
+]
 
 # Initialise environment variables
 env = environ.Env()

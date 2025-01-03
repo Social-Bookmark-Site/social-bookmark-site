@@ -6,11 +6,11 @@ import { format } from "date-fns";
 import TagList from './posts/tagList';
 
 async function getPost(id) {
-    var data = {title: 'hi'};
+    var data = false;
     await axios
-    .get('/api/posts/' + id)
+    .get('http://localhost:8000/api/posts/' + id + '/')
     .then((res) => data = res.data)
-    .catch((err) => console.log(err));
+    .catch((err) => {console.log(data); console.log(err)});
 
     return data;
 }
@@ -33,7 +33,8 @@ const scrollToPage = (id) => {
 
 export default function PostPage() {
     const {data} = useLoaderData();
-    
+
+    if (data) {
       return (
         <div className="window" id={data.id.toString()}>
             <a href={"#" + data.id.toString()} className="window-topbar">
@@ -59,6 +60,10 @@ export default function PostPage() {
             </div>
             {scrollToPage(data.id.toString())}
         </div>
-  );
+        );
+    }
+    return (
+        <></>
+    )
 }
 

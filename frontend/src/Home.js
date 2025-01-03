@@ -26,19 +26,19 @@ class Home extends Component {
 
   loadPosts = () => {
     axios
-    .get('/api/posts/?ordering=-date&page=1')
+    .get('http://localhost:8000/api/posts/?ordering=-date&page=1')
     .then((res) => this.setState({posts: res.data.results}))
     .catch((err) => console.log(err));
 
     axios
-    .get('/api/featured_posts')
+    .get('http://localhost:8000/featured_posts')
     .then((res) => this.setState({featured: res.data.results}))
     .catch((err) => console.log(err));
   };
 
   loooog = () => {
     axios
-    .get('/api/posts/?ordering=-date&page=' + String(this.state.page))
+    .get('http://localhost:8000/api/posts/?ordering=-date&page=' + String(this.state.page))
     .then((res) => {
       this.setState({posts: this.state.posts.concat(res.data.results)});
       this.setState({page: this.state.page + 1});

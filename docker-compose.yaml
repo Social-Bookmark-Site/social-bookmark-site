@@ -1,0 +1,22 @@
+services:
+  backend:
+    build: ./backend
+    container_name: backend 
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/backend
+    command: bash -c "python manage.py runserver 0.0.0.0:8000"
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./frontend:/frontend
+    depends_on:
+      - backend
+    command: npm start
